@@ -42,7 +42,7 @@ const updateUser = async (req, res) => {
   const { id } = req.params;
   const newData = req.body;
   try {
-    let data = await model.getById(id);
+    let data = await model.update(id, newData);
     return api.ok(res, data);
   } catch {
     return api.error(res, "Internal Server Error", 500);
