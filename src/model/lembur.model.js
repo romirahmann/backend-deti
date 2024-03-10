@@ -11,6 +11,9 @@ const getAll = async () =>
       "r.lembur_id",
       "r.client_name",
       "r.duration",
+      "r.user_id",
+      "r.date",
+      "r.file_bukti",
       "u.username",
       "u.role_id",
       "u.foto_profil",
@@ -26,6 +29,9 @@ const getByUser = async (id) =>
       "r.lembur_id",
       "r.client_name",
       "r.duration",
+      "r.user_id",
+      "r.date",
+      "r.file_bukti",
       "u.username",
       "u.role_id",
       "u.foto_profil",
@@ -34,7 +40,8 @@ const getByUser = async (id) =>
     .from("report_lembur as r")
     .join("users as u", "u.user_id", "r.user_id")
     .leftJoin("approval as a", "a.approval_id", "r.approval_id")
-    .where("r.user_id", id);
+    .where("r.user_id", id)
+    .andWhere("r.is_deleted", 0);
 
 module.exports = {
   insert,
