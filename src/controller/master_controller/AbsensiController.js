@@ -37,10 +37,20 @@ const getAllAbsensi = async (req, res) => {
     return api.error(res, "Internal Server Error", 500);
   }
 };
+const getTotalAbsensi = async (req, res) => {
+  const { id } = req.params;
+  try {
+    let data = await model.getTotalAbsen(id);
+    return api.ok(res, data);
+  } catch {
+    return api.error(res, "Internal Server Error", 500);
+  }
+};
 
 module.exports = {
   addAbsensi,
   updateAbsensi,
   getAbsensiByUser,
   getAllAbsensi,
+  getTotalAbsensi,
 };

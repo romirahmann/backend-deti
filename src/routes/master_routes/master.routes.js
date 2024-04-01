@@ -19,11 +19,14 @@ router.get("/reports", ReportController.getAllReport);
 router.get("/reportByUserId/:id", ReportController.getByUserId);
 router.post("/report", ReportController.addReport);
 router.put("/report/:id", ReportController.updateReport);
+router.get("/akumulasi-report/:id/:month/:year", ReportController.getAkumulasi);
+router.get("/total-reports/:id", ReportController.getTotalLaporanLembur);
 
 // ABSENSI
 router.get("/absensis", AbsensiController.getAllAbsensi);
 router.get("/absensi-by-user/:id", AbsensiController.getAbsensiByUser);
 router.post("/absensi", AbsensiController.addAbsensi);
 router.put("/absensi/:id", AbsensiController.updateAbsensi);
+router.get("/total-absensi/:id", AbsensiController.getTotalAbsensi);
 
 module.exports = router;

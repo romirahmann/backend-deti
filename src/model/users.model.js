@@ -12,7 +12,8 @@ const getAll = async () =>
       "ur.role_description"
     )
     .from("users as u")
-    .join("user_role as ur", "ur.role_id", "u.role_id");
+    .join("user_role as ur", "ur.role_id", "u.role_id")
+    .where("u.is_deleted", 0);
 
 const getById = async (id) =>
   await db

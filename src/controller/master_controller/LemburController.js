@@ -37,10 +37,30 @@ const getByUserId = async (req, res) => {
     return api.error(res, "Internal Server Error", 500);
   }
 };
+const getAkumulasi = async (req, res) => {
+  const { id, month, year } = req.params;
 
+  try {
+    let data = await model.getAkumulasiLembur(id, month, year);
+    return api.ok(res, data);
+  } catch {
+    return api.error(res, "Internal Server Error", 500);
+  }
+};
+const getTotalLaporanLembur = async (req, res) => {
+  const { id } = req.params;
+  try {
+    let data = await model.getTotalLaporan(id);
+    return api.ok(res, data);
+  } catch {
+    return api.error(res, "Internal Server Error", 500);
+  }
+};
 module.exports = {
   addReport,
   updateReport,
   getAllReport,
   getByUserId,
+  getAkumulasi,
+  getTotalLaporanLembur,
 };
